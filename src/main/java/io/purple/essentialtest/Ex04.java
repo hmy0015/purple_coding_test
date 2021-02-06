@@ -35,20 +35,29 @@ public class Ex04 {
 			}
 		}
 		
-		// result -> 자릿수합을 담아줄 변수, tmp = 입력받은 숫자를 담아줄 변수
+		// result -> 루프가 반복될 때마다 연산한 자릿수들의 '총합'을 담아줄 변수 (ex : 325 = 3+2+5(10), result = 10 -> 315 = 3+1+5(9), result = 10 + 9)
+		// tmp -> 입력받은 숫자를 담아줄 변수
 		int result = 0, tmp = num;
 		
 		while(tmp > 100 || tmp >= 10) { // 입력된숫자값이 10 이상이거나 (입력된숫자-자릿수합)이 100 이하가 될 때까지 무한루프
 			while(tmp != 0) { // 자릿수합 구하는 연산 반복문 (입력받은 숫자가 0이 될 때까지 반복)
+				System.out.println("자릿수합 구하는 연산 반복문 (입력받은 숫자가 0이 될 때까지 반복) : " + tmp);
+				
 				result += (tmp % 10); // 10으로 나눈 나머지를 합에 더하기
+				System.out.println("10으로 나눈 나머지를 합에 더하기 : " + result);
+		
 				tmp -= (tmp % 10); // 10으로 나눈 나머지를 입력받은 숫자에서 빼기
+				System.out.println("10으로 나눈 나머지를 입력받은 숫자에서 빼기 : " + tmp);
+				
 				tmp /= 10; // 입력받은 숫자를 10으로 나눠서 자릿수 줄이기
+				System.out.println("입력받은 숫자를 10으로 나눠서 자릿수 줄이기 : " + tmp);
 			}
 			tmp = num - result; // tmp에 (입력받은숫자-자릿수합) 값 넣기
+			System.out.println("tmp에 (입력받은숫자" + tmp + "-자릿수합" + result + ") 값 넣기 : " + tmp);
 		}
 		
 		br.close(); // 버퍼 닫기
 
-		return fCode.get(Integer.toString(tmp)); // 과일코드 리턴, 과일코드의 키값이 String 형태로 저장되어있기 때문에 tmp를 강제형변환 하여 코드를 불러옴
+		return fCode.get(Integer.toString(tmp)); // 과일코드 리턴, 과일코드의 키값이 String 형태로 저장되어있기 때문에 tmp를 강제형변환 하여 과일 코드를 불러옴
 	}
 }
