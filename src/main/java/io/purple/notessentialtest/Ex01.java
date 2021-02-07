@@ -5,20 +5,13 @@ public class Ex01 {
 		String str = "Abracadabra"; // 임의의 글자 입력
 		System.out.println(vowels(str)); // 모음 개수 구해주는 메소드 호출
 	}
-	// 정규표현식 사용
+	
 	// 모음 구분해주는 메소드
 	public static int vowels(String str) {
-		int vowels = 0; // 모음을 세어 줄 변수 선언
+		String regVowels = "[^aeiou]"; // 정규표현식으로 모음 담기 -> a,e,i,o,u가 아닌 글자를 구분
 		
-		String regEx = "a|e|i|o|u+"; // 정규표현식으로 모음 담기
-		String strArr[] = str.split(""); // 문자를 한글자씩 잘라서 배열에 담기
+		String vowels = str.toLowerCase().replaceAll(regVowels, ""); // 입력받은 문자를 모두 소문자로 치환한 후, 모음이 아닌 글자(자음)는 제거 함 
 		
-		for(int i = 0; i < strArr.length; i++) { // 배열의 크기만큼 반복
-			if(strArr[i].toLowerCase().matches(regEx)) { // 글자를 모두 소문자로 치환한 후, 모음과 일치하는 문자열이 있는 경우 
-				vowels += 1; // 모음을 세어주는 변수에 +1
-			}
-		}
-		
-		return vowels; // 글자가 가진 모음의 개수 리턴
+		return vowels.length(); // 자음이 제거된 글자의 길이(=모음의 개수)를 리턴
 	}
 }
