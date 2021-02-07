@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Ex04 {
 	public static void main(String[] args) throws IOException {
-		int num = 325; // 임의의 숫자 입력
+		int num = 5; // 임의의 숫자 입력
 		System.out.println(fruitCode(num)); // 과일코드 출력 함수 호출
 	}
 
@@ -39,13 +39,17 @@ public class Ex04 {
 		// tmp -> 입력받은 숫자를 담아줄 변수
 		int result = 0, tmp = num;
 		
-		while(tmp > 100 || tmp >= 10) { // 입력된숫자값이 10 이상이거나 (입력된숫자-자릿수합)이 100 이하가 될 때까지 무한루프
+		while(true) {
 			while(tmp != 0) { // 자릿수합 구하는 연산 반복문 (입력받은 숫자가 0이 될 때까지 반복)				
 				result += (tmp % 10); // 10으로 나눈 나머지를 합에 더하기		
 				tmp -= (tmp % 10); // 10으로 나눈 나머지를 입력받은 숫자에서 빼기				
 				tmp /= 10; // 입력받은 숫자를 10으로 나눠서 자릿수 줄이기
 			}
 			tmp = num - result; // tmp에 (입력받은숫자-자릿수합) 값 넣기
+			
+			if(tmp <= 100) { // tmp가 100 이하일 경우 반복문 종료
+				break;
+			}
 		}
 		
 		br.close(); // 버퍼 닫기
